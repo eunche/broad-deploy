@@ -35,5 +35,5 @@ git init
 git remote add origin https://github.com/eunchae619/broad-deploy.git
 git pull origin master
 git checkout -b 만들브랜치명
-
+git push
 ```
