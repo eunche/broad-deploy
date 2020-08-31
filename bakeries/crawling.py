@@ -470,8 +470,8 @@ def add_data(local):
             links = driver.find_elements_by_css_selector(
                 "#info\.search\.place\.list > li"
             )
-    # 2바퀴돌고 끝내기
-    return
+    # # 2바퀴돌고 끝내기
+    # return
 
     page_3 = driver.find_element_by_css_selector("#info\.search\.page\.no3")
     page_3.send_keys(Keys.ENTER)
