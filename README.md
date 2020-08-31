@@ -9,34 +9,31 @@
 
 
 
-#### 1. 프로젝트 클론
- ```
- git clone https://github.com/eunchae619/broad-deploy.git
- ```
+#### 1. 프로젝트 다운로드
++ 프로젝트파일 압푹 풀고, 프로젝트 파일 안에서 VSCode 켜기
 
 
-#### 2. 프로젝트 위치로 디렉토리 이동
-```
-cd broad-deploy
-```
 
 
-#### 3. 가상환경 셋팅
+#### 2. 가상환경 셋팅
 ``` Python
 python -m venv myvenv
 source myvenv/Scripts/activate
 ```
 
 
-#### 4. requirements.txt에 나열된 모듈들 설치
+#### 3. requirements.txt에 나열된 모듈들 설치
 ``` 
 pip install -r requirements.txt
 python -m pip install --upgrade pip
 ```
 
 
-#### 5. DB 셋팅(makemigrations/migrate)
+#### 4. 깃 설정
 ``` 
-python manage.py makemigrations
-python manage.py migrate
+git init
+git remote add origin https://github.com/eunchae619/broad-deploy.git
+git pull origin master
+git checkout -b 만들브랜치명
+
 ```
