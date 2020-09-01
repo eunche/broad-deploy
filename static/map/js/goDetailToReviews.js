@@ -61,7 +61,7 @@ const setReviews = () => {
   }
 };
 
-const setReviewWriteBox = (review_count) => {
+const setReviewWriteBox = (review_count, pk) => {
   reviewsContent.innerHTML = `
     <div class="review_write_box">
         <div class="review_left_box">
@@ -83,7 +83,7 @@ const ajaxCallReviewsData = (pk, review_count) => {
     dataType: "json",
     success: (response) => {
       reviewsData = response;
-      setReviewWriteBox(review_count);
+      setReviewWriteBox(review_count, pk);
       setReviews();
       setReviewsHeader();
     },

@@ -11,7 +11,11 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'bakeries/css/bakery_review_list.css' %}">
 {% endblock css %}
-
+<script>
+    function button1_click() {
+        alert("로그인이 필요합니다.");
+    }
+</script>
 
 {% block header %}
 <div class="header__wrapper">
@@ -49,7 +53,11 @@
             </div>
             <div class="bakery_review_star">{{review.rating}}</div>
         </div>
-        <img class="delete_trash_icon" src="{% static 'bakeries/img/trash.png' %}" alt="쓰레기통 아이콘">
+        {% if review.user == request.user %}
+        <a href="{% url 'bakeries:review_delete' review.id %}">
+            <img class="delete_trash_icon" src="{% static 'bakeries/img/trash.png' %}" alt="쓰레기통 아이콘">
+        </a>
+        {% endif %}
     </div>
     <div class="bakery_review_comment">{{review.body}}</div>
 </div>
