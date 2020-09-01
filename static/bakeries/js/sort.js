@@ -1,8 +1,9 @@
 const listElement = document.querySelector(".list");
-const soboro = document.querySelector(".jsSoboro");
-const rollcake = document.querySelector(".jsRollcake");
+const scon = document.querySelector(".jsScon");
+const cake = document.querySelector(".jsCake");
 const makarong = document.querySelector(".jsMakarong");
-const cookie = document.querySelector(".jsCookie");
+const croffle = document.querySelector(".jsCroffle");
+const tart = document.querySelector(".jsTart");
 let pickedData;
 
 const listInfoHTML = (
@@ -60,46 +61,37 @@ const addInfo = (JSONData) => {
   }
 };
 
-const clickCategory = async (bread) => {
+const clickCategory = async (event) => {
   let eng_bread;
-  if (bread === "소보로빵") {
-    eng_bread = "soboro";
-    if (soboro.classList.contains("opacity_1")) {
-    } else {
-      rollcake.classList.remove("opacity_1");
-      makarong.classList.remove("opacity_1");
-      cookie.classList.remove("opacity_1");
-      soboro.classList.add("opacity_1");
-    }
-  } else if (bread === "롤케이크") {
-    eng_bread = "rollcake";
-    if (rollcake.classList.contains("opacity_1")) {
-    } else {
-      soboro.classList.remove("opacity_1");
-      makarong.classList.remove("opacity_1");
-      cookie.classList.remove("opacity_1");
-      rollcake.classList.add("opacity_1");
-    }
-  } else if (bread === "마카롱") {
+  let breadElementList = [scon, cake, makarong, croffle, tart];
+  let breadList = ["스콘", "케이크", "마카롱", "크로플", "타르트"];
+  let bread = event.target.parentElement.querySelector(".menu_1__name")
+    .innerText;
+  if (bread === breadList[0]) {
+    eng_bread = "scon";
+  } else if (bread === breadList[1]) {
+    eng_bread = "cake";
+  } else if (bread === breadList[2]) {
     eng_bread = "makarong";
-    if (makarong.classList.contains("opacity_1")) {
-    } else {
-      rollcake.classList.remove("opacity_1");
-      soboro.classList.remove("opacity_1");
-      cookie.classList.remove("opacity_1");
-      makarong.classList.add("opacity_1");
-    }
-  } else if (bread === "쿠키") {
-    eng_bread = "cookie";
-    if (cookie.classList.contains("opacity_1")) {
-    } else {
-      rollcake.classList.remove("opacity_1");
-      makarong.classList.remove("opacity_1");
-      soboro.classList.remove("opacity_1");
-      cookie.classList.add("opacity_1");
+  } else if (bread === breadList[3]) {
+    eng_bread = "croffle";
+  } else if (bread === breadList[4]) {
+    eng_bread = "tart";
+  }
+  let breadIndex = breadList.indexOf(bread);
+  if (breadIndex != 0) {
+    let temp;
+    temp = breadElementList[0];
+    breadElementList[0] = breadElementList[breadIndex];
+    breadElementList[breadIndex] = temp;
+  }
+  if (breadElementList[0].classList.contains("opacity_1")) {
+  } else {
+    breadElementList[0].classList.add("opacity_1");
+    for (let index = 1; index < breadElementList.length; index++) {
+      breadElementList[index].classList.remove("opacity_1");
     }
   }
-
   try {
     const get = await $.getJSON(
       `http://127.0.0.1:8000/bakery/${eng_bread}-data/`,
@@ -113,6 +105,6 @@ const clickCategory = async (bread) => {
   }
 };
 
-$.getJSON(`http://127.0.0.1:8000/bakery/soboro-data/`, (data) => {
+$.getJSON(`http://127.0.0.1:8000/bakery/tart-data/`, (data) => {
   addInfo(data);
 });

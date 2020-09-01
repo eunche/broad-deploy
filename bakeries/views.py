@@ -50,10 +50,7 @@ def ajax_like(request):
 
 
 def get_sorted_data(bread):
-    soboro_object = bakery_models.Menu.objects.filter(name=bread)
-    # soboro_bakery = list(
-    #     map(lambda x: (x.bakery, x.bakery.total_rating()), soboro_object)
-    # )
+    soboro_object = bakery_models.Menu.objects.filter(name__contains=bread)
     soboro_bakery = []
     for x in soboro_object:
         x.bakery.temp_review_count = x.bakery.review_count()
@@ -64,14 +61,14 @@ def get_sorted_data(bread):
     return [i[0] for i in soboro_bakery]
 
 
-def soboro_sort_data(request):
-    data = serializers.serialize("json", get_sorted_data("소보로빵"))
+def scon_sort_data(request):
+    data = serializers.serialize("json", get_sorted_data("스콘"))
     response = HttpResponse(content=data)
     return response
 
 
-def rollcake_sort_data(request):
-    data = serializers.serialize("json", get_sorted_data("롤케이크"))
+def cake_sort_data(request):
+    data = serializers.serialize("json", get_sorted_data("케이크"))
     response = HttpResponse(content=data)
     return response
 
@@ -82,8 +79,14 @@ def makarong_sort_data(request):
     return response
 
 
-def cookie_sort_data(request):
-    data = serializers.serialize("json", get_sorted_data("쿠키"))
+def croffle_sort_data(request):
+    data = serializers.serialize("json", get_sorted_data("크로플"))
+    response = HttpResponse(content=data)
+    return response
+
+
+def tart_sort_data(request):
+    data = serializers.serialize("json", get_sorted_data("타르트"))
     response = HttpResponse(content=data)
     return response
 

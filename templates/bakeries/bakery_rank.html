@@ -30,29 +30,35 @@
 
 {% block content %}
 <div class="menu">
-    <div onclick="clickCategory('소보로빵')" class="menu_1">
+    <div onclick="clickCategory(event)" class="menu_1">
         <div style="background-image: url(/static/bakeries/img/soboro.jpg);"
-            class="menu__img menu_1__photo jsSoboro opacity_1">
+            class="menu__img menu_1__photo jsTart opacity_1">
         </div>
-        <div class="menu_1__name">소보로빵</div>
+        <div class="menu_1__name">타르트</div>
     </div>
 
-    <div onclick="clickCategory('롤케이크')" class="menu_2">
-        <div style="background-image: url(/static/bakeries/img/rollcake.jpg);"
-            class="menu__img menu_2__photo jsRollcake"></div>
-        <div class="menu_2__name">롤케이크</div>
+    <div onclick="clickCategory(event)" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/rollcake.jpg);" class="menu__img menu_1__photo jsCake">
+        </div>
+        <div class="menu_1__name">케이크</div>
     </div>
 
-    <div onclick="clickCategory('마카롱')" class="menu_3">
+    <div onclick="clickCategory(event)" class="menu_1">
         <div style="background-image: url(/static/bakeries/img/makarong.jpg);"
-            class="menu__img menu_3__photo jsMakarong"></div>
-        <div class="menu_3__name">마카롱</div>
+            class="menu__img menu_1__photo jsMakarong"></div>
+        <div class="menu_1__name">마카롱</div>
     </div>
 
-    <div onclick="clickCategory('쿠키')" class="menu_4">
-        <div style="background-image: url(/static/bakeries/img/cookie.jpg);" class="menu__img menu_4__photo jsCookie">
+    <div onclick="clickCategory(event)" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/cookie.jpg);" class="menu__img menu_1__photo jsCroffle">
         </div>
-        <div class="menu_4__name">쿠키</div>
+        <div class="menu_1__name">크로플</div>
+    </div>
+
+    <div onclick="clickCategory(event)" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/cookie.jpg);" class="menu__img menu_1__photo jsScon">
+        </div>
+        <div class="menu_1__name">스콘</div>
     </div>
 </div>
 <hr class="sort_hr">
