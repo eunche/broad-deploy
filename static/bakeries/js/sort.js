@@ -94,7 +94,7 @@ const clickCategory = async (event) => {
   }
   try {
     const get = await $.getJSON(
-      `http://127.0.0.1:8000/bakery/${eng_bread}-data/`,
+      `http://broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com/bakery/${eng_bread}-data/`,
       (data) => {
         pickedData = data;
       }
@@ -105,6 +105,9 @@ const clickCategory = async (event) => {
   }
 };
 
-$.getJSON(`http://127.0.0.1:8000/bakery/tart-data/`, (data) => {
-  addInfo(data);
-});
+$.getJSON(
+  `http://broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com/bakery/tart-data/`,
+  (data) => {
+    addInfo(data);
+  }
+);

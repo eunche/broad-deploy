@@ -12,12 +12,17 @@ const changeScrapDB = () => {
 };
 
 const clickScrap = () => {
-  if (scrapImg.src === "http://127.0.0.1:8000/static/posts/img/star.png") {
-    scrapImg.src = "http://127.0.0.1:8000/static/posts/img/white_star.png";
+  if (
+    scrapImg.src ===
+    "http://broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com/static/posts/img/star.png"
+  ) {
+    scrapImg.src =
+      "http://broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com/static/posts/img/white_star.png";
     scrapText.classList.remove("text-color-gold");
     scrap.classList.remove("border-color-gold");
   } else {
-    scrapImg.src = "http://127.0.0.1:8000/static/posts/img/star.png";
+    scrapImg.src =
+      "http://broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com/static/posts/img/star.png";
     scrapText.classList.add("text-color-gold");
     scrap.classList.add("border-color-gold");
   }

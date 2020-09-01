@@ -25,7 +25,7 @@ SECRET_KEY = "a%$t+m6p#8c4^3d^#uta#+gnh5w7(!z3g1-ku4+qb^w1b0m&lp"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["broad.eba-pxbtxuac.ap-northeast-2.elasticbeanstalk.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com", "127.0.0.1"]
 
 # Django에서 기본으로 제공해주는 App들
 DJANGO_APPS = [

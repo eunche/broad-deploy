@@ -9,10 +9,15 @@ const changeLikeDB = () => {
 
 const clickLike = () => {
   let like = document.querySelector(".jsLike");
-  if (like.src === "http://127.0.0.1:8000/static/bakeries/img/heart.png") {
-    like.src = "http://127.0.0.1:8000/static/bakeries/img/white_heart.png";
+  if (
+    like.src ===
+    "http://broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com/static/bakeries/img/heart.png"
+  ) {
+    like.src =
+      "http://broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com/static/bakeries/img/white_heart.png";
   } else {
-    like.src = "http://127.0.0.1:8000/static/bakeries/img/heart.png";
+    like.src =
+      "http://broad.eba-phdqscw9.ap-northeast-2.elasticbeanstalk.com/static/bakeries/img/heart.png";
   }
   changeLikeDB();
 };
