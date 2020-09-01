@@ -11,7 +11,11 @@
 {% block content %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.as_p}}
-    <input class="profile_image_submit" type="submit" style="border-radius: 3px;" value="등록">
-</form>
+    <div class="profile_image_update">    
+        <input type="file" name="avatar" accept="image/*" id="id_avatar">    
+        </span>
+        <br><br>
+        <input class="profile_image_submit" type="submit" style="border-radius: 3px;" value="등록">
+    </div>
+    </form>
 {% endblock content %}
