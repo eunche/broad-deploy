@@ -7,7 +7,7 @@ const setBakeryReviews = () => {
     reviewBoxs.insertAdjacentHTML(
       "beforeend",
       `
-        <div class="bakery_review_detail">
+        <div style="width:47.5%;" class="bakery_review_detail">
             <div class="bakery_review_detail_topbox">
                 <div class="bakery_review_profileimg"><img src="${
                   detailData.reviews[i].user_img
