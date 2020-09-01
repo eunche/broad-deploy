@@ -149,9 +149,15 @@
   font-size: 13px;
   color: #868686;
 }
-.post_detail_leave_a_comment:hover {
+
+.post_detail_leave_a_comment > span {
+  padding: 4px 5px;
+}
+
+.post_detail_leave_a_comment > span:hover {
   cursor: pointer;
 }
+
 .post_detail_comment_reply_arrow {
   padding: 10px;
 }
@@ -222,4 +228,15 @@ a:hover {
 .recomment_arrow {
   width: 15px !important;
   margin-right: 10px;
+}
+
+/* JS관련 */
+.jsAddtargeting {
+  color: #fff6ed;
+  border-radius: 8px;
+  background-color: #5d2c1d;
+}
+
+.set_border_brown {
+  border-color: #5d2c1d !important;
 }

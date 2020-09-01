@@ -138,7 +138,9 @@
                 {% endfor %}
 
                 {% if user.is_authenticated %}
-                <div onclick="addRecoment('{{comment.pk}}')" class="post_detail_leave_a_comment">답글 쓰기</div>
+                <div class="post_detail_leave_a_comment">
+                    <span class="jsTargetRecommentButton" onclick="addRecoment('{{comment.pk}}')">답글 쓰기</span>
+                </div>
                 {% endif %}
             </div>
             {% empty %}
