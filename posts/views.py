@@ -41,7 +41,12 @@ def post_detail(request, post_id):
             comment = form.save(commit=False)
             comment.post = post_detail
             comment.user = request.user
+            if request.POST.get("pk") is not None:
+                comment.target_comment = Comment.objects.get(
+                    pk=int(request.POST.get("pk"))
+                )
             comment.save()
+
             return redirect("/post/" + str(post_id))
     else:
         form = CommentForm()
