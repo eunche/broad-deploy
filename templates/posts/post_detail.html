@@ -49,6 +49,8 @@
     <div class="post_detail_contents_box">
         <div class="post_detail_title_scrap">
             <span class="post_detail_title">{{post_detail.title}}</span>
+
+            {% if user.is_authenticated %}
             {% if is_scraped %}
             <span class="post_detail_scrap jsScrap border-color-gold" onclick="clickScrap()">
                 <img class="jsScrapImg" src="{% static 'posts/img/star.png' %}">
@@ -60,6 +62,13 @@
                 <span class="post_detail_scrap_text jsScraptext">스크랩</span>
             </span>
             {% endif %}
+            {% else %}
+            <span class="post_detail_scrap jsScrap">
+                <img class="jsScrapImg" src="{% static 'posts/img/white_star.png' %}">
+                <span class="post_detail_scrap_text jsScraptext">스크랩</span>
+            </span>
+            {% endif %}
+
         </div>
         <div class="post_detail_contents">{{post_detail.body}}</div>
         <div class="post_detail_photo">
@@ -86,19 +95,6 @@
                 <span class="post_detail_comment_top">댓글</span>
                 <span class="post_detail_comment_count">{{post.comments_count}}</span>
             </div>
-
-            {% if user.is_authenticated %}
-            <form method="POST" class="post-form" enctype="multipart/form-data">
-
-                {% csrf_token %}
-                <span class="post_detail_add_comment">{{ form.body }}</span>
-                <input class="post_comment_submit" type="submit" value="등록" style="border-radius: 3px;">
-
-
-            </form>
-            {% else %}
-            <p class="first_login">로그인 후에 댓글작성이 가능합니다.</p>
-            {% endif %}
 
             <!-- 댓글 박스 -->
             {% for comment in comments %}
@@ -156,6 +152,19 @@
 
 </div>
 {% endblock content %}
+
+{% block bottom_icons %}
+<div class="bottom_blank bottom_height"></div>
+{% if user.is_authenticated %}
+<form method="POST" class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <span class="post_detail_add_comment">{{ form.body }}</span>
+    <input class="post_comment_submit" type="submit" value="등록" style="border-radius: 3px;">
+</form>
+{% else %}
+<div style="font-size:14px;" class="post-form">로그인 후에 댓글작성이 가능합니다</div>
+{% endif %}
+{% endblock bottom_icons %}
 
 {% block script %}
 <script>
