@@ -140,7 +140,10 @@
                     </div>
                 </div>
                 {% endfor %}
-                <div class="post_detail_leave_a_comment">답글 쓰기</div>
+
+                {% if user.is_authenticated %}
+                <div onclick="addRecoment('{{comment.pk}}')" class="post_detail_leave_a_comment">답글 쓰기</div>
+                {% endif %}
             </div>
             {% empty %}
             <p> </p>
@@ -161,4 +164,6 @@
     const postPK = "{{ post_detail.pk }}"
 </script>
 <script src="{% static 'posts/js/scrap.js' %}"></script>
+<script src="{% static 'posts/js/addRecomment.js' %}"></script>
+
 {% endblock script %}
