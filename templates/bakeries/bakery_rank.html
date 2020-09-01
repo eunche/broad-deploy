@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 홈페이지 타이틀 -->
+{% block title %}
+랭킹
+{% endblock title %}
+
+
+<!-- 개별적인 css/link태그 추가 -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'bakeries/css/bakery_rank.css' %}">
+<!-- 제이쿼리 -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+{% endblock css %}
+
+
+{% block header %}
+<div class="header__wrapper">
+    <div class="header__leftbox">
+    </div>
+    <div class="header__midbox">
+        <span class="header__title">랭킹</span>
+    </div>
+    <div class="header__rightbox">
+    </div>
+</div>
+{% endblock header %}
+
+
+{% block content %}
+<div class="menu">
+    <div onclick="clickCategory('소보로빵')" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/soboro.jpg);"
+            class="menu__img menu_1__photo jsSoboro opacity_1">
+        </div>
+        <div class="menu_1__name">소보로빵</div>
+    </div>
+
+    <div onclick="clickCategory('롤케이크')" class="menu_2">
+        <div style="background-image: url(/static/bakeries/img/rollcake.jpg);"
+            class="menu__img menu_2__photo jsRollcake"></div>
+        <div class="menu_2__name">롤케이크</div>
+    </div>
+
+    <div onclick="clickCategory('마카롱')" class="menu_3">
+        <div style="background-image: url(/static/bakeries/img/makarong.jpg);"
+            class="menu__img menu_3__photo jsMakarong"></div>
+        <div class="menu_3__name">마카롱</div>
+    </div>
+
+    <div onclick="clickCategory('쿠키')" class="menu_4">
+        <div style="background-image: url(/static/bakeries/img/cookie.jpg);" class="menu__img menu_4__photo jsCookie">
+        </div>
+        <div class="menu_4__name">쿠키</div>
+    </div>
+</div>
+<hr class="sort_hr">
+<div class="list jsList">
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'bakeries/js/sort.js' %}"></script>
+{% endblock script %}
