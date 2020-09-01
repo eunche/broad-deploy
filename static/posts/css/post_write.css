@@ -41,11 +41,10 @@ option:focus {
 .post_write_submit_img_box {
   display: flex;
   justify-content: flex-end;
-  padding: 10px 0;
+  padding: 10px;
 }
 .post_write_img_box {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   margin-right: 12px;
 }
@@ -53,13 +52,24 @@ option:focus {
   width: 23px;
   margin-right: 5px;
 }
-.post_write_submit {
-  background-color: black;
+.image_delete{
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  background-color: #5d2c1d;
   border: none;
   border-radius: 5px;
   color: white;
   padding: 8px 12px;
   margin-right: 10px;
+}
+.post_write_submit {
+  background-color: #5d2c1d;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 12px;
+  margin-left: 10px;
 }
 
 #id_photo {

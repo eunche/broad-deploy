@@ -27,7 +27,6 @@
 
 {% block content %}
 <form method="POST" class="post-form" enctype="multipart/form-data">
-
     {% csrf_token %}
     <div class="post_write_title">제목</div>
     <div class="post_write_title_box">{{ form.title }}</div>
@@ -35,13 +34,13 @@
     <div class="post_write_contents_box">{{ form.body }}</div>
     {{ form.user }}
     <!-- 글쓰기 이미지추가&등록 박스 -->
-    <div class="post_write_submit_img_box">
-        <span class="post_write_img_box">
-            {{ form.photo }}
-            <!-- <img src="{% static 'posts/img/cameraimg.png' %}" class="post_write_camera"> -->
-        </span>
-        <input class="post_write_submit" type="submit" style="border-radius: 3px;" value="등록">
-    </div>
-
+    <div class="post_write_submit_img_box"></div>
+    <span class="post_write_img_box">
+    <input type="checkbox" name="photo-clear" id="photo-clear_id">
+    <label for="photo-clear_id" class="image_delete">사진 삭제</label>
+    <input type="file" name="photo" accept="image/*" id="id_photo">    
+    </span>
+    <br>
+    <input class="post_write_submit" type="submit" style="border-radius: 3px;" value="수정">
 </form>
 {% endblock content %}

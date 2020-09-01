@@ -94,3 +94,12 @@ div.profile_update_input {
 .signup_button:hover {
   cursor: pointer;
 }
+
+.profile_image_submit{
+  background-color: #5d2c1d;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 12px;
+  margin-right: 10px;
+}
