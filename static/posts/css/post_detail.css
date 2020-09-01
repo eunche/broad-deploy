@@ -108,7 +108,8 @@
 }
 .first_login {
   font-size: 14px;
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 /* 댓글 박스 */
 .post_detail_comment_box {
