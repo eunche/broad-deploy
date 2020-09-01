@@ -128,9 +128,17 @@ def review_write(request, bakery_id):
 
 
 def review_delete(request, review_id):
-    review = get_object_or_404(bakery_models.Review, id=review_id)
+    review = get_object_or_404(bakery_models.Review, pk=review_id)
     if review.user == request.user:
         review.delete()
-        return redirect("map:main_map")
+        return redirect('bakeries:list')
+    else:
+        raise Http404("접근할 수 없습니다.")
+
+def my_review_delete(request, review_id):
+    review = get_object_or_404(bakery_models.Review, pk=review_id)
+    if review.user == request.user:
+        review.delete()
+        return redirect("bakeries:user_review_list")
     else:
         raise Http404("접근할 수 없습니다.")
