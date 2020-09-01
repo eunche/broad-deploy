@@ -155,7 +155,7 @@ STATIC_URL = "/static/"
 # 개발단계에서 사용하는 정적파일들이 위치한 경로
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # collectstatic명령어를 통해 Django 프로젝트에서 사용하는 모든 정적 파일을 한 곳에 모아넣는 경로(배포시 사용하기 위해)
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, ".static_root")
 
 
 """
