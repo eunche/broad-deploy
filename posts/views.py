@@ -8,6 +8,7 @@ from . import models as post_models
 from .models import Comment
 from .forms import PostForm
 from .forms import CommentForm
+from django.http import Http404, HttpResponse
 
 # Create your views here.
 
@@ -52,6 +53,8 @@ def post_detail(request, post_id):
 
 
 def post_write(request):
+    if request.user.is_anonymous:
+        return redirect("users:login")
 
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -70,19 +73,26 @@ def post_update(request, post_id):
     post = get_object_or_404(post_models.Post, pk=post_id)
     form = PostForm(request.POST, request.FILES, instance=post, auto_id=True)
 
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            return redirect("/post/" + str(post_id))
+    if post.user == request.user:
+        if request.method == "POST":
+            if form.is_valid():
+                form.save()
+                return redirect("/post/" + str(post_id))
+
+        else:
+            form = PostForm(instance=post)
+            return render(request, "posts/post_update.html", {"form": form})
     else:
-        form = PostForm(instance=post)
-        return render(request, "posts/post_update.html", {"form": form})
+        raise Http404("권한이 없습니다.")
 
 
 def post_delete(request, post_id):
     post = post_models.Post.objects.get(pk=post_id)
-    post.delete()
-    return redirect("/post/")
+    if post.user == request.user:
+        post.delete()
+        return redirect("/post/")
+    else:
+        raise Http404("권한이 없습니다.")
 
 
 def add_comment_to_post(request, post_id):
@@ -109,7 +119,7 @@ def comment_delete(request, post_id, comment_id):
         and not request.is_staff
         and request.user != document.author
     ):
-        return redirect("/post/" + str(post_id))
+        raise Http404("권한이 없습니다.")
     else:
         comment.delete()
         return redirect("/post/" + str(post_id))
