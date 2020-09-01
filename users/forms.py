@@ -62,15 +62,18 @@ class LoginForm(forms.Form):
 class SignUpForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ["email", "nickname"]
+        fields = ["nickname"]
         widgets = {
-            "email": forms.EmailInput(
-                attrs={"class": "signup_input", "placeholder": "@example.com"}
-            ),
             "nickname": forms.TextInput(
                 attrs={"class": "signup_input", "placeholder": "선택입력"}
             ),
         }
+
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={"class": "signup_input", "placeholder": "@example.com"}
+        )
+    )
 
     password = forms.CharField(
         widget=forms.PasswordInput(
@@ -84,6 +87,13 @@ class SignUpForm(forms.ModelForm):
         )
     )
 
+    def clean_email(self):
+        try:
+            User.objects.get(email=self.cleaned_data.get("email"))
+            raise forms.ValidationError("이미 존재하는 계정입니다")
+        except User.DoesNotExist:
+            return self.cleaned_data.get("email")
+
     def clean_confirm_password(self):
         password = self.cleaned_data.get("password")
         confirm_password = self.cleaned_data.get("confirm_password")
@@ -92,7 +102,8 @@ class SignUpForm(forms.ModelForm):
         else:
             return password
 
+
 class UpdateProfileImageForm(forms.ModelForm):
-     class Meta:
+    class Meta:
         model = User
-        fields = ['avatar']
+        fields = ["avatar"]
