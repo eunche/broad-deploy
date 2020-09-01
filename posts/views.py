@@ -29,6 +29,7 @@ def post_my(request):
 
 def post_detail(request, post_id):
     post_detail = get_object_or_404(post_models.Post, pk=post_id)
+    comments = post_detail.comments.filter(target_comment__isnull=True)
     try:
         is_scraped = request.user.scraped.filter(pk=post_id).exists()
     except:
@@ -47,7 +48,12 @@ def post_detail(request, post_id):
     return render(
         request,
         "posts/post_detail.html",
-        {"post_detail": post_detail, "form": form, "is_scraped": is_scraped},
+        {
+            "post_detail": post_detail,
+            "comments": comments,
+            "form": form,
+            "is_scraped": is_scraped,
+        },
     )
 
 
@@ -132,4 +138,3 @@ def ajax_scrap(request):
 
 def scrap_post_list(request):
     return render(request, "posts/scrap_post_list.html")
-

@@ -108,12 +108,12 @@
 }
 .first_login {
   font-size: 14px;
-  margin-top: 5px;
+  margin: 10px 0;
 }
 /* 댓글 박스 */
 .post_detail_comment_box {
   border-bottom: 1px solid #f1eded;
-  padding: 18px 0;
+  padding: 13px 0;
 }
 .post_detail_comment_box img {
   width: 35px;
@@ -139,8 +139,9 @@
   font-size: 13px;
 }
 .post_detail_leave_a_comment {
+  display: flex;
+  justify-content: flex-end;
   font-size: 13px;
-  float: right;
   color: #868686;
 }
 .post_detail_comment_reply_arrow {
@@ -193,4 +194,17 @@ a:hover {
 
 .text-color-gold {
   color: #ffc000;
+}
+
+.recomment {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-bottom: 0;
+  border: none;
+}
+
+.recomment_arrow {
+  width: 15px !important;
+  margin-right: 10px;
 }
