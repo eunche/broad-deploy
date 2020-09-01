@@ -37,8 +37,9 @@
     <!-- 글쓰기 이미지추가&등록 박스 -->
     <div class="post_write_submit_img_box">
         <span class="post_write_img_box">
-            {{ form.photo }}
-            <!-- <img src="{% static 'posts/img/cameraimg.png' %}" class="post_write_camera"> -->
+            <input type="checkbox" name="photo-clear" id="photo-clear_id">
+            <label for="photo-clear_id">사진 삭제</label>
+            <input type="file" name="photo" accept="image/*" id="id_photo">
         </span>
         <input class="post_write_submit" type="submit" style="border-radius: 3px;" value="등록">
     </div>
