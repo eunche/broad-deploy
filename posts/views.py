@@ -1,9 +1,9 @@
 import json
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import Http404, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from django.http import HttpResponse
 from . import models as post_models
 from .models import Comment
 from .forms import PostForm
@@ -63,7 +63,8 @@ def post_detail(request, post_id):
 
 
 def post_write(request):
-
+    if request.user.is_anonymous:
+        return redirect("users:login")
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
@@ -79,6 +80,8 @@ def post_write(request):
 
 def post_update(request, post_id):
     post = get_object_or_404(post_models.Post, pk=post_id)
+    if post.user != request.user:
+        raise Http404("권한이 없습니다.")
     form = PostForm(request.POST, request.FILES, instance=post, auto_id=True)
 
     if request.method == "POST":
@@ -92,8 +95,11 @@ def post_update(request, post_id):
 
 def post_delete(request, post_id):
     post = post_models.Post.objects.get(pk=post_id)
-    post.delete()
-    return redirect("/post/")
+    if post.user == request.user:
+        post.delete()
+        return redirect("/post/")
+    else:
+        raise Http404("권한이 없습니다.")
 
 
 def add_comment_to_post(request, post_id):
@@ -113,14 +119,9 @@ def add_comment_to_post(request, post_id):
 
 def comment_delete(request, post_id, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
-    comment.author = request.user
 
-    if (
-        comment.author != request.user
-        and not request.is_staff
-        and request.user != document.author
-    ):
-        return redirect("/post/" + str(post_id))
+    if comment.user != request.user:
+        raise Http404("권한이 없습니다.")
     else:
         comment.delete()
         return redirect("/post/" + str(post_id))

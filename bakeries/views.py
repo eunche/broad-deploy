@@ -115,7 +115,7 @@ def user_review_list(request):
 
 def review_write(request, bakery_id):
     if request.user.is_anonymous:
-        raise Http404("접근할 수 없습니다.")
+        return redirect("users:login")
 
     if request.method == "POST":
         form = WriteReviewForm(request.POST)
