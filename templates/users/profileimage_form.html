@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}
 프로필 수정
 {% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'users/css/profileimage_form.css' %}">
+{% endblock css %}
+
 {% block content %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit">
+    <input class="submit_button" type="submit">
 </form>
 {% endblock content %}
