@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.core import serializers
 from django.http import Http404, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -134,6 +134,10 @@ def review_delete(request, review_id):
     review = get_object_or_404(bakery_models.Review, id=review_id)
     if review.user == request.user:
         review.delete()
-        return redirect("map:main_map")
+        if "my" in request.META.get("HTTP_REFERER"):
+            return redirect("bakeries:user_review_list")
+        return redirect(
+            reverse("bakeries:review_list", kwargs={"bakery_id": review.bakery.pk})
+        )
     else:
         raise Http404("접근할 수 없습니다.")

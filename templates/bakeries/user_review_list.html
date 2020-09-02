@@ -36,7 +36,9 @@
             <div class="bakery_review_id">{{review.bakery}}</div>
             <div class="bakery_review_time">{{review.date}}</div>
         </div>
-        <img class="delete_trash_icon" src="{% static 'bakeries/img/trash.png' %}" alt="쓰레기통 아이콘">
+        <a href="{% url 'bakeries:review_delete' review.id %}">
+            <img class="delete_trash_icon" src="{% static 'bakeries/img/trash.png' %}" alt="쓰레기통 아이콘">
+        </a>
     </div>
     <div class="bakery_review_comment"><span class="bakery_review_star">{{review.rating}}</span>{{review.body}}</div>
 </div>
