@@ -1,3 +1,5 @@
+input
+
 /* 글쓰기 제목 박스 */
 .post_write_title_box {
   border-top: solid 1px #a6a6a6;
@@ -41,29 +43,45 @@ option:focus {
 .post_write_submit_img_box {
   display: flex;
   justify-content: flex-end;
-  padding: 10px 0;
+  padding: 10px;
 }
 .post_write_img_box {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  margin-right: 12px;
+  padding: 0 10px;
 }
 .post_write_img_box img {
   width: 23px;
   margin-right: 5px;
 }
+
+.post_update_left {
+  display: flex;
+  align-items: center;
+}
+
+.image_delete {
+  font-size: 14px;
+  text-align: center;
+  background-color: #5d2c1d;
+  border: none;
+  border-radius: 3px;
+  color: #fff6ed;
+  padding: 10px 12px;
+}
+
 .post_write_submit {
-  background-color: black;
+  font-size: 14px;
+  background-color: #5d2c1d;
   border: none;
   border-radius: 5px;
-  color: white;
+  color: #fff6ed;
   padding: 8px 12px;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #id_photo {
-  width: 70%;
 }
 #file-upload-button {
   background-color: black;
@@ -75,4 +93,11 @@ option:focus {
 }
 #id_user {
   margin-top: 10px;
+}
+
+.post_update_submit_bigbox {
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  justify-content: flex-end;
 }
