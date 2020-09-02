@@ -32,7 +32,8 @@
 
     {% csrf_token %}
     <div class="post_write_title">제목</div>
-    <div class="post_write_title_box">{{ form.title }}</div>
+    <div style="border-top: solid 1px #eeeeee;border-bottom: solid 1px #eeeeee;" class="post_write_title_box">
+        {{ form.title }}</div>
     <div class="post_write_contents">내용</div>
     <div class="post_write_contents_box">{{ form.body }}</div>
     <!-- 글쓰기 이미지추가&등록 박스 -->
