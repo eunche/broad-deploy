@@ -129,6 +129,7 @@ const setDetailHTML2 = () => {
         <!-- 가게 위치 박스 -->
         <div class="bakery_location_box">
             <div id="detailMap" class="bakery_location"></div>
+            <div class="blank_bakery_location"></div>
             <div class="bakery_location_address">${
               detailData2.bakery.fields.address
             }</div>

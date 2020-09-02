@@ -41,10 +41,10 @@
 .signup_button {
   width: 280px;
   height: 55px;
-  border-radius: 8px;
+  border-radius: 8px !important;
   border: none;
-  background-color: #727272;
-  color: white;
+  background-color: #5d2c1d;
+  color: #fff6ed;
   font-size: 17px;
   font-weight: bold;
 }
